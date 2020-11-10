@@ -1,0 +1,438 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="GetNSPaymentDetails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:n="clr-namespace:NetsuiteActivities;assembly=NetsuiteActivities" xmlns:nn="clr-namespace:NetsuiteActivities.NetsuiteService;assembly=NetsuiteActivities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_NSIsProd" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_NSHeaderCredentials" Type="InArgument(n:HeaderCredentials)" />
+    <x:Property Name="in_NSBillInternalID" Type="InArgument(x:String)" />
+    <x:Property Name="io_PaymentDetailsDT" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_Comments" Type="InOutArgument(x:String)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <this:GetNSPaymentDetails.in_NSIsProd>
+    <InArgument x:TypeArguments="x:Boolean" />
+  </this:GetNSPaymentDetails.in_NSIsProd>
+  <this:GetNSPaymentDetails.in_NSHeaderCredentials>
+    <InArgument x:TypeArguments="n:HeaderCredentials" />
+  </this:GetNSPaymentDetails.in_NSHeaderCredentials>
+  <sap:VirtualizedContainerService.HintSize>962,2211</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="29">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>NetsuiteActivities</x:String>
+      <x:String>NetsuiteActivities.NetsuiteService</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>UiPath.Core</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="35">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>NetsuiteActivities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
+      <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="GetNSBillPaymentDetails" sap:VirtualizedContainerService.HintSize="845,2106" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="NSAppliedToType" />
+      <Variable x:TypeArguments="x:String" Name="NSAppliedToDocNo" />
+      <Variable x:TypeArguments="x:String" Name="NSAppliedToAmount" />
+      <Variable x:TypeArguments="x:String" Name="NSAppliedToCurrency" />
+      <Variable x:TypeArguments="nn:VendorPayment" Name="NSCurrentPayment" />
+      <Variable x:TypeArguments="x:String" Name="AmountFormat" />
+      <Variable x:TypeArguments="x:String" Name="NSPaymentTransactionNumber" />
+      <Variable x:TypeArguments="x:String" Name="NSPaymentDate" />
+      <Variable x:TypeArguments="x:String" Name="NSPaymentAmount" />
+      <Variable x:TypeArguments="x:String" Name="NSPaymentCurrency" />
+      <Variable x:TypeArguments="x:String" Name="NSPaymentSubsidiary" />
+      <Variable x:TypeArguments="x:String" Name="NSPaymentBankAcct" />
+      <Variable x:TypeArguments="x:String" Name="NSPaymentAccountCode" />
+      <Variable x:TypeArguments="scg:List(nn:VendorPayment)" Name="NSPayments" />
+      <Variable x:TypeArguments="nn:VendorPaymentApply[]" Name="NSAppliedToList" />
+      <Variable x:TypeArguments="nn:TransactionSearchRow[]" Name="NSJournals" />
+      <Variable x:TypeArguments="x:String" Name="NSCurrentJournalDate" />
+      <Variable x:TypeArguments="x:Double" Name="NSCurrentJournalAmount" />
+      <Variable x:TypeArguments="x:String" Name="NSCurrentJournalTranNo" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, sd:DataTable)" Name="NSJournalDictionary" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Assign - Amount Format" sap:VirtualizedContainerService.HintSize="803,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[AmountFormat]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">#,##0.00</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Sequence DisplayName="Vendor Payment" sap:VirtualizedContainerService.HintSize="803,66" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message - Get Vendor Payments" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Getting vendor bill payments...&quot;]" />
+      <n:getVendorPaymentsByVendorBill AccountName="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" TokenID="{x:Null}" TokenSecret="{x:Null}" DisplayName="Get vendor payments by vendor bill" HeaderCredentials="[in_NSHeaderCredentials]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="getVendorPaymentsByVendorBill_1" IsProduction="[in_NSIsProd]" VendorBillInternalID="[in_NSBillInternalID]" VendorPaymentsList="[NSPayments]" />
+      <ui:ForEach x:TypeArguments="nn:VendorPayment" CurrentIndex="{x:Null}" DisplayName="For Each - Payment" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[NSPayments]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="nn:VendorPayment">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="nn:VendorPayment" Name="payment" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body - Get Payment Details" sap:VirtualizedContainerService.HintSize="454,1250" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:LogMessage DisplayName="Log Message - Get Vendor Payment Details" sap:VirtualizedContainerService.HintSize="412,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Getting vendor payment details...&quot;]" />
+              <n:getVendorPayment AccountName="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" IsRecordFound="{x:Null}" TokenID="{x:Null}" TokenSecret="{x:Null}" TransactionDescription="{x:Null}" DisplayName="Get vendor payment" HeaderCredentials="[in_NSHeaderCredentials]" sap:VirtualizedContainerService.HintSize="412,22" sap2010:WorkflowViewState.IdRef="getVendorPayment_1" InternalID="[payment.internalId]" IsProduction="[in_NSIsProd]" VendorPayment="[NSCurrentPayment]" />
+              <ui:MultipleAssign DisplayName="Multiple Assign - Current Payment Details" sap:VirtualizedContainerService.HintSize="412,315" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[NSPaymentTransactionNumber]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[NSCurrentPayment.transactionNumber]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[NSPaymentDate]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[NSCurrentPayment.tranDate.ToString(in_Config("PaymentDateFormat").ToString)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[NSPaymentAmount]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[NSCurrentPayment.total.ToString(AmountFormat)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[NSPaymentCurrency]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[NSCurrentPayment.currency.name]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[NSPaymentSubsidiary]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[NSCurrentPayment.subsidiary.name]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[NSPaymentBankAcct]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[NSCurrentPayment.account.name]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[NSPaymentAccountCode]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[NSPaymentBankAcct.Substring(0, 6)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="nn:VendorPaymentApply[]">[NSAppliedToList]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="nn:VendorPaymentApply[]">[NSCurrentPayment.applyList.apply]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:MultipleAssign>
+              <ui:ForEach x:TypeArguments="nn:VendorPaymentApply" CurrentIndex="{x:Null}" DisplayName="For Each - Applied To" sap:VirtualizedContainerService.HintSize="412,610" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[NSAppliedToList]">
+                <ui:ForEach.Body>
+                  <ActivityAction x:TypeArguments="nn:VendorPaymentApply">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="nn:VendorPaymentApply" Name="apply" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body - Get Applied To Details" sap:VirtualizedContainerService.HintSize="376,476" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:LogMessage DisplayName="Log Message - Get Applied To Details" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Getting payment applied to details...&quot;]" />
+                      <ui:MultipleAssign DisplayName="Multiple Assign - Applied To Details" sap:VirtualizedContainerService.HintSize="334,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                        <ui:MultipleAssign.AssignOperations>
+                          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:String">[NSAppliedToType]</OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:String">[apply.type]</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_11">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:String">[NSAppliedToDocNo]</OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:String">[apply.refNum]</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_12">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:String">[NSAppliedToAmount]</OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:String">[apply.amount.ToString(AmountFormat)]</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:String">[NSAppliedToCurrency]</OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:String">[apply.currency]</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                          </scg:List>
+                        </ui:MultipleAssign.AssignOperations>
+                      </ui:MultipleAssign>
+                      <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{NSPaymentTransactionNumber, NSPaymentDate, NSPaymentAmount, NSPaymentCurrency, NSPaymentSubsidiary, NSPaymentBankAcct, NSAppliedToType, NSAppliedToDocNo, NSAppliedToAmount, NSAppliedToCurrency}]" DataTable="[io_PaymentDetailsDT]" DisplayName="Add Data Row - Payment Details" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEach.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ForEach>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEach>
+    </Sequence>
+    <Sequence DisplayName="Journal Payment" sap:VirtualizedContainerService.HintSize="803,1560" sap2010:WorkflowViewState.IdRef="Sequence_8">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message - Get Journal Payments" sap:VirtualizedContainerService.HintSize="761,91" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Getting bill journal payments...&quot;]" />
+      <Assign DisplayName="Assign - Initialize Dictionary" sap:VirtualizedContainerService.HintSize="761,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+        <Assign.To>
+          <OutArgument x:TypeArguments="scg:Dictionary(x:String, sd:DataTable)">[NSJournalDictionary]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="scg:Dictionary(x:String, sd:DataTable)">[New Dictionary(Of String, DataTable)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <n:getCustomSavedSearchAuditBot AccountName="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" OperationStatus="{x:Null}" TokenID="{x:Null}" TokenSecret="{x:Null}" TransactionNumber="{x:Null}" TransactionNumberSpecified="{x:Null}" DisplayName="Get custom saved search audit bot" HeaderCredentials="[in_NSHeaderCredentials]" sap:VirtualizedContainerService.HintSize="761,22" sap2010:WorkflowViewState.IdRef="getCustomSavedSearchAuditBot_1" IsProduction="[in_NSIsProd]" SavedSearchId="[in_Config(&quot;NSJournalSavedSeachID&quot;).ToString]" SavedSearchIdSpecified="True" TransactionInternalId="[in_NSBillInternalID]" TransactionInternalIdSpecified="True" TransactionSearchRowArray="[NSJournals]" />
+      <ui:ForEach x:TypeArguments="nn:TransactionSearchRow" CurrentIndex="{x:Null}" DisplayName="For Each - NS Journal" sap:VirtualizedContainerService.HintSize="761,887" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[NSJournals]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="nn:TransactionSearchRow">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="nn:TransactionSearchRow" Name="transactionSearchRow" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body - For each Returned Journal Entry" sap:VirtualizedContainerService.HintSize="725,753" sap2010:WorkflowViewState.IdRef="Sequence_10">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MultipleAssign DisplayName="Multiple Assign - Current Journal Details" sap:VirtualizedContainerService.HintSize="683,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[NSCurrentJournalTranNo]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[transactionSearchRow.applyingTransactionJoin.transactionNumber(0).searchValue]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[NSCurrentJournalDate]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[transactionSearchRow.applyingTransactionJoin.tranDate(0).searchValue.ToString(in_Config("PaymentDateFormat").ToString)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:Double">[NSCurrentJournalAmount]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:Double">[Math.Abs(transactionSearchRow.applyingTransactionJoin.amount(0).searchValue)]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+              </ui:MultipleAssign>
+              <If Condition="[NSJournalDictionary.Keys.Contains(NSCurrentJournalTranNo)]" DisplayName="If - Journal Exists in Dictionary" sap:VirtualizedContainerService.HintSize="683,461" sap2010:WorkflowViewState.IdRef="If_1">
+                <If.Then>
+                  <Assign DisplayName="Assign - New Amount" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Object">[NSJournalDictionary(NSCurrentJournalTranNo).Rows(0).Item("JournalAmount")]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Object">[CDbl(NSJournalDictionary(NSCurrentJournalTranNo).Rows(0).Item("JournalAmount")) + NSCurrentJournalAmount]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Sequence DisplayName="Create Dictionary Entry" sap:VirtualizedContainerService.HintSize="376,313" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="sd:DataTable" Name="NSCurrentJournalDT" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:BuildDataTable DataTable="[NSCurrentJournalDT]" DisplayName="Build Data Table - Journal Date/Amount" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;JournalDate&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;JournalAmount&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+                    <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{NSCurrentJournalDate, NSCurrentJournalAmount}]" DataTable="[NSCurrentJournalDT]" DisplayName="Add Data Row - Create Journal Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
+                    <Assign DisplayName="Assign - Create Journal Key" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="sd:DataTable">[NSJournalDictionary(NSCurrentJournalTranNo)]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="sd:DataTable">[NSCurrentJournalDT]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </ui:ForEach>
+      <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, sd:DataTable)" CurrentIndex="{x:Null}" DisplayName="For Each - Journal Number" sap:VirtualizedContainerService.HintSize="761,248" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[NSJournalDictionary]">
+        <ui:ForEach.Body>
+          <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, sd:DataTable)">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, sd:DataTable)" Name="keyValuePair" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Body - Add Journal details To Table" sap:VirtualizedContainerService.HintSize="242,114" sap2010:WorkflowViewState.IdRef="Sequence_11">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{keyValuePair.Key, keyValuePair.Value.Rows(0).Item(&quot;JournalDate&quot;), Cdbl(keyValuePair.Value.Rows(0).Item(&quot;JournalAmount&quot;)).ToString(AmountFormat), String.Empty, String.Empty, String.Empty, String.Empty, String.Empty, String.Empty, String.Empty}]" DataTable="[io_PaymentDetailsDT]" DisplayName="Add Data Row - Journal Payment Details" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+            </Sequence>
+          </ActivityAction>
+        </ui:ForEach.Body>
+      </ui:ForEach>
+    </Sequence>
+    <If Condition="[NSJournalDictionary.Keys.Count &gt; 0]" DisplayName="If - Journals Found" sap:VirtualizedContainerService.HintSize="803,208" sap2010:WorkflowViewState.IdRef="If_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Assign DisplayName="Assign - No JournalFound" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[io_Comments]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[io_Comments + System.Environment.NewLine + in_Config("JournalPaymentFound").ToString]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+    </If>
+  </Sequence>
+</Activity>
