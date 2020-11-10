@@ -3,7 +3,7 @@
   "description": "Retrieves a list o transactions (user input file), downloads support documents from Netsuite or Concur, depending on the transaction type and uploads them to Sharepoint.",
   "main": "Main.xaml",
   "dependencies": {
-    "NetsuiteActivities": "[1.0.237]",
+    "NetsuiteActivities": "[1.0.245]",
     "UiPath.Credentials.Activities": "[1.1.6479.13204]",
     "UiPath.Excel.Activities": "[2.9.3]",
     "UiPath.Form.Activities": "[1.1.7369.24738]",

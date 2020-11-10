@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>962,2086</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>962,2046</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
@@ -90,7 +90,6 @@
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <TryCatch sap2010:Annotation.AnnotationText="##Business Process Layer##&#xA;Description: In this file all other process specific files will be invoked. If an application exception occurs, the current transaction can be retried. If a BRE is thrown, the transaction will be skipped. Can be a flowchart or sequence. " DisplayName="wbProcess" sap:VirtualizedContainerService.HintSize="954,1981" sap2010:WorkflowViewState.IdRef="TryCatch_4">
@@ -491,7 +490,7 @@
                                 <av:PointCollection x:Key="ConnectorLocation">600,613 600,680 550,680</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence DisplayName="Netsuite" sap:VirtualizedContainerService.HintSize="825,2603" sap2010:WorkflowViewState.IdRef="Sequence_74">
+                            <Sequence DisplayName="Netsuite" sap:VirtualizedContainerService.HintSize="825,1785" sap2010:WorkflowViewState.IdRef="Sequence_74">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -533,10 +532,10 @@
                                   </If.Then>
                                 </If>
                               </Sequence>
-                              <Sequence DisplayName="Read Payment Details Template" sap:VirtualizedContainerService.HintSize="783,410" sap2010:WorkflowViewState.IdRef="Sequence_87">
+                              <Sequence DisplayName="Read Payment Details Template" sap:VirtualizedContainerService.HintSize="783,66" sap2010:WorkflowViewState.IdRef="Sequence_87">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -553,410 +552,14 @@
                               </Sequence>
                               <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetNSPaymentDetails workflow" sap:VirtualizedContainerService.HintSize="783,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="GetNSPaymentDetails.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_NSIsProd">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="in_NSIsProd" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="n:HeaderCredentials" x:Key="in_NSHeaderCredentials">
-                                    <mva:VisualBasicValue x:TypeArguments="n:HeaderCredentials" ExpressionText="in_NSHeaderCredentials" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_NSBillInternalID">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="NSBills(0).internalId" />
-                                  </InArgument>
-                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_PaymentDetailsDT">
-                                    <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="PaymentDetailsDT" />
-                                  </InOutArgument>
-                                  <InOutArgument x:TypeArguments="x:String" x:Key="io_Comments">
-                                    <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_Comments" />
-                                  </InOutArgument>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                    <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                                  </InArgument>
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_NSIsProd">[in_NSIsProd]</InArgument>
+                                  <InArgument x:TypeArguments="n:HeaderCredentials" x:Key="in_NSHeaderCredentials">[in_NSHeaderCredentials]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_NSBillInternalID">[NSBills(0).internalId]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_PaymentDetailsDT">[PaymentDetailsDT]</InOutArgument>
+                                  <InOutArgument x:TypeArguments="x:String" x:Key="io_Comments">[out_Comments]</InOutArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
-                              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="783,434" sap2010:WorkflowViewState.IdRef="CommentOut_1">
-                                <ui:CommentOut.Body>
-                                  <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="284,356" sap2010:WorkflowViewState.IdRef="Sequence_97">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <Sequence DisplayName="Get Payment Details" sap:VirtualizedContainerService.HintSize="242,264" sap2010:WorkflowViewState.IdRef="Sequence_85">
-                                      <Sequence.Variables>
-                                        <Variable x:TypeArguments="nn:VendorPayment" Name="NSCurrentPayment" />
-                                        <Variable x:TypeArguments="x:String" Name="NSPaymentTransactionNumber" />
-                                        <Variable x:TypeArguments="x:String" Name="NSPaymentDate" />
-                                        <Variable x:TypeArguments="x:String" Name="NSPaymentAmount" />
-                                        <Variable x:TypeArguments="x:String" Name="NSPaymentCurrency" />
-                                        <Variable x:TypeArguments="x:String" Name="NSPaymentSubsidiary" />
-                                        <Variable x:TypeArguments="x:String" Name="NSPaymentBankAcct" />
-                                        <Variable x:TypeArguments="nn:VendorPaymentApply[]" Name="NSAppliedToList" />
-                                        <Variable x:TypeArguments="x:String" Name="AmountFormat" />
-                                        <Variable x:TypeArguments="x:String" Name="NSPaymentAccountCode" />
-                                        <Variable x:TypeArguments="x:String" Name="NSAppliedToType" />
-                                        <Variable x:TypeArguments="x:String" Name="NSAppliedToDocNo" />
-                                        <Variable x:TypeArguments="x:String" Name="NSAppliedToAmount" />
-                                        <Variable x:TypeArguments="x:String" Name="NSAppliedToCurrency" />
-                                      </Sequence.Variables>
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <Sequence DisplayName="Vendor Payment" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_93">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <ui:LogMessage DisplayName="Log Message - Get Vendor Payments" sap:VirtualizedContainerService.HintSize="490,91" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Getting vendor payments...&quot;]" />
-                                        <n:getVendorPaymentsByVendorBill AccountName="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" TokenID="{x:Null}" TokenSecret="{x:Null}" DisplayName="Get vendor payments by vendor bill" HeaderCredentials="[in_NSHeaderCredentials]" sap:VirtualizedContainerService.HintSize="490,22" sap2010:WorkflowViewState.IdRef="getVendorPaymentsByVendorBill_1" IsProduction="[in_NSIsProd]" VendorBillInternalID="[NSBills(0).internalId]" VendorPaymentsList="[NSCurrentPayments]" />
-                                        <ui:ForEach x:TypeArguments="nn:VendorPayment" CurrentIndex="{x:Null}" DisplayName="For Each - Payment" sap:VirtualizedContainerService.HintSize="490,1415" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[NSCurrentPayments]">
-                                          <ui:ForEach.Body>
-                                            <ActivityAction x:TypeArguments="nn:VendorPayment">
-                                              <ActivityAction.Argument>
-                                                <DelegateInArgument x:TypeArguments="nn:VendorPayment" Name="payment" />
-                                              </ActivityAction.Argument>
-                                              <Sequence DisplayName="Body - Get Payment Details" sap:VirtualizedContainerService.HintSize="454,1281" sap2010:WorkflowViewState.IdRef="Sequence_88">
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                                <ui:LogMessage DisplayName="Log Message - Get Vendor Payment Details" sap:VirtualizedContainerService.HintSize="412,91" sap2010:WorkflowViewState.IdRef="LogMessage_15" Level="Info" Message="[&quot;Getting vendor payment details...&quot;]" />
-                                                <n:getVendorPayment AccountName="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" IsRecordFound="{x:Null}" TokenID="{x:Null}" TokenSecret="{x:Null}" TransactionDescription="{x:Null}" DisplayName="Get vendor payment" HeaderCredentials="[in_NSHeaderCredentials]" sap:VirtualizedContainerService.HintSize="412,22" sap2010:WorkflowViewState.IdRef="getVendorPayment_1" InternalID="[payment.internalId]" IsProduction="[in_NSIsProd]" VendorPayment="[NSCurrentPayment]" />
-                                                <ui:MultipleAssign DisplayName="Multiple Assign - Current Payment Details" sap:VirtualizedContainerService.HintSize="412,346" sap2010:WorkflowViewState.IdRef="MultipleAssign_6">
-                                                  <ui:MultipleAssign.AssignOperations>
-                                                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_13">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[AmountFormat]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">#,##0.00</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_19">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentTransactionNumber]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSCurrentPayment.transactionNumber]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_14">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentDate]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSCurrentPayment.tranDate.ToString(in_Config("PaymentDateFormat").ToString)]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_15">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentAmount]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSCurrentPayment.total.ToString(AmountFormat)]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_16">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentCurrency]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSCurrentPayment.currency.name]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_17">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentSubsidiary]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSCurrentPayment.subsidiary.name]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_26">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentBankAcct]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSCurrentPayment.account.name]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_27">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentAccountCode]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSPaymentBankAcct.Substring(0, 6)]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_18">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="nn:VendorPaymentApply[]">[NSAppliedToList]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="nn:VendorPaymentApply[]">[NSCurrentPayment.applyList.apply]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                    </scg:List>
-                                                  </ui:MultipleAssign.AssignOperations>
-                                                </ui:MultipleAssign>
-                                                <ui:ForEach x:TypeArguments="nn:VendorPaymentApply" CurrentIndex="{x:Null}" DisplayName="For Each - Applied To" sap:VirtualizedContainerService.HintSize="412,610" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[NSAppliedToList]">
-                                                  <ui:ForEach.Body>
-                                                    <ActivityAction x:TypeArguments="nn:VendorPaymentApply">
-                                                      <ActivityAction.Argument>
-                                                        <DelegateInArgument x:TypeArguments="nn:VendorPaymentApply" Name="apply" />
-                                                      </ActivityAction.Argument>
-                                                      <Sequence DisplayName="Body - Get Applied To Details" sap:VirtualizedContainerService.HintSize="376,476" sap2010:WorkflowViewState.IdRef="Sequence_89">
-                                                        <sap:WorkflowViewStateService.ViewState>
-                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                          </scg:Dictionary>
-                                                        </sap:WorkflowViewStateService.ViewState>
-                                                        <ui:LogMessage DisplayName="Log Message - Get Applied To Details" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_16" Level="Info" Message="[&quot;Getting payment applied to details...&quot;]" />
-                                                        <ui:MultipleAssign DisplayName="Multiple Assign - Applied To Details" sap:VirtualizedContainerService.HintSize="334,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_7">
-                                                          <ui:MultipleAssign.AssignOperations>
-                                                            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
-                                                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_20">
-                                                                <ui:AssignOperation.To>
-                                                                  <OutArgument x:TypeArguments="x:String">[NSAppliedToType]</OutArgument>
-                                                                </ui:AssignOperation.To>
-                                                                <ui:AssignOperation.Value>
-                                                                  <InArgument x:TypeArguments="x:String">[apply.type]</InArgument>
-                                                                </ui:AssignOperation.Value>
-                                                              </ui:AssignOperation>
-                                                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_21">
-                                                                <ui:AssignOperation.To>
-                                                                  <OutArgument x:TypeArguments="x:String">[NSAppliedToDocNo]</OutArgument>
-                                                                </ui:AssignOperation.To>
-                                                                <ui:AssignOperation.Value>
-                                                                  <InArgument x:TypeArguments="x:String">[apply.refNum]</InArgument>
-                                                                </ui:AssignOperation.Value>
-                                                              </ui:AssignOperation>
-                                                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_22">
-                                                                <ui:AssignOperation.To>
-                                                                  <OutArgument x:TypeArguments="x:String">[NSAppliedToAmount]</OutArgument>
-                                                                </ui:AssignOperation.To>
-                                                                <ui:AssignOperation.Value>
-                                                                  <InArgument x:TypeArguments="x:String">[apply.amount.ToString(AmountFormat)]</InArgument>
-                                                                </ui:AssignOperation.Value>
-                                                              </ui:AssignOperation>
-                                                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_23">
-                                                                <ui:AssignOperation.To>
-                                                                  <OutArgument x:TypeArguments="x:String">[NSAppliedToCurrency]</OutArgument>
-                                                                </ui:AssignOperation.To>
-                                                                <ui:AssignOperation.Value>
-                                                                  <InArgument x:TypeArguments="x:String">[apply.currency]</InArgument>
-                                                                </ui:AssignOperation.Value>
-                                                              </ui:AssignOperation>
-                                                            </scg:List>
-                                                          </ui:MultipleAssign.AssignOperations>
-                                                        </ui:MultipleAssign>
-                                                        <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{NSPaymentTransactionNumber, NSPaymentDate, NSPaymentAmount, NSPaymentCurrency, NSPaymentSubsidiary, NSPaymentBankAcct, NSAppliedToType, NSAppliedToDocNo, NSAppliedToAmount, NSAppliedToCurrency}]" DataTable="[PaymentDetailsDT]" DisplayName="Add Data Row - Payment Details" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-                                                      </Sequence>
-                                                    </ActivityAction>
-                                                  </ui:ForEach.Body>
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                </ui:ForEach>
-                                              </Sequence>
-                                            </ActivityAction>
-                                          </ui:ForEach.Body>
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </ui:ForEach>
-                                      </Sequence>
-                                      <Sequence DisplayName="Journal Payment" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_94">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <n:getJournalsAppliedToVendorBill AccountName="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" TokenID="{x:Null}" TokenSecret="{x:Null}" DisplayName="Get journals applied to vendor bill" HeaderCredentials="[in_NSHeaderCredentials]" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="getJournalsAppliedToVendorBill_1" IsProduction="[in_NSIsProd]" JournalEntryList="[NSJournalsApplied]" VendorBillInternalID="[NSBills(0).internalId]" />
-                                        <If Condition="[NSJournalsApplied.Count &gt; 0]" DisplayName="If - Journals Found" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_9">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <If.Then>
-                                            <Assign DisplayName="Assign - No JournalFound" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_23">
-                                              <Assign.To>
-                                                <OutArgument x:TypeArguments="x:String">[out_Comments]</OutArgument>
-                                              </Assign.To>
-                                              <Assign.Value>
-                                                <InArgument x:TypeArguments="x:String">[out_Comments + System.Environment.NewLine + in_Config("JournalPaymentFound").ToString]</InArgument>
-                                              </Assign.Value>
-                                            </Assign>
-                                          </If.Then>
-                                        </If>
-                                        <ui:ForEach x:TypeArguments="nn:JournalEntry" CurrentIndex="{x:Null}" DisplayName="For Each - Journal" sap:VirtualizedContainerService.HintSize="484,51" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[NSJournalsApplied]">
-                                          <ui:ForEach.Body>
-                                            <ActivityAction x:TypeArguments="nn:JournalEntry">
-                                              <ActivityAction.Argument>
-                                                <DelegateInArgument x:TypeArguments="nn:JournalEntry" Name="journal" />
-                                              </ActivityAction.Argument>
-                                              <Sequence DisplayName="Body - Get Payment Details" sap:VirtualizedContainerService.HintSize="376,786" sap2010:WorkflowViewState.IdRef="Sequence_96">
-                                                <Sequence.Variables>
-                                                  <Variable x:TypeArguments="nn:VendorPayment" Name="NSCurrentPayment" />
-                                                  <Variable x:TypeArguments="x:String" Name="NSPaymentTransactionNumber" />
-                                                  <Variable x:TypeArguments="x:String" Name="NSPaymentDate" />
-                                                  <Variable x:TypeArguments="x:String" Name="NSPaymentAmount" />
-                                                  <Variable x:TypeArguments="x:String" Name="NSPaymentCurrency" />
-                                                  <Variable x:TypeArguments="x:String" Name="NSPaymentSubsidiary" />
-                                                  <Variable x:TypeArguments="x:String" Name="NSPaymentBankAcct" />
-                                                  <Variable x:TypeArguments="nn:VendorPaymentApply[]" Name="NSAppliedToList" />
-                                                  <Variable x:TypeArguments="x:String" Name="AmountFormat" />
-                                                  <Variable x:TypeArguments="x:String" Name="NSPaymentAccountCode" />
-                                                  <Variable x:TypeArguments="nn:JournalEntry" Name="NSCurrentJournalEntry" />
-                                                </Sequence.Variables>
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                                <ui:LogMessage DisplayName="Log Message - Get Journal Payment Details" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Getting journal details...&quot;]" />
-                                                <n:getJournalEntry AccountName="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" IsRecordFound="{x:Null}" TokenID="{x:Null}" TokenSecret="{x:Null}" TransactionDescription="{x:Null}" DisplayName="Get journal entry" HeaderCredentials="[in_NSHeaderCredentials]" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="getJournalEntry_1" InternalID="[journal.internalId]" IsProduction="[in_NSIsProd]" JournalEntry="[NSCurrentJournalEntry]" />
-                                                <ui:MultipleAssign DisplayName="Multiple Assign - Current Payment Details" sap:VirtualizedContainerService.HintSize="334,439" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
-                                                  <ui:MultipleAssign.AssignOperations>
-                                                    <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[AmountFormat]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">#,##0.00</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentTransactionNumber]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSCurrentJournalEntry.tranId]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentDate]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSCurrentJournalEntry.tranDate.ToString(in_Config("PaymentDateFormat").ToString)]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentAmount]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentCurrency]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSCurrentJournalEntry.currency.name]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_36">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentSubsidiary]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[NSCurrentJournalEntry.subsidiary.name]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_37">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentBankAcct]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_38">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSPaymentAccountCode]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_39">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSAppliedToType]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_40">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSAppliedToDocNo]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_41">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSAppliedToAmount]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                      <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_42">
-                                                        <ui:AssignOperation.To>
-                                                          <OutArgument x:TypeArguments="x:String">[NSAppliedToCurrency]</OutArgument>
-                                                        </ui:AssignOperation.To>
-                                                        <ui:AssignOperation.Value>
-                                                          <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
-                                                        </ui:AssignOperation.Value>
-                                                      </ui:AssignOperation>
-                                                    </scg:List>
-                                                  </ui:MultipleAssign.AssignOperations>
-                                                </ui:MultipleAssign>
-                                                <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{NSPaymentTransactionNumber, NSPaymentDate, NSPaymentAmount, NSPaymentCurrency, NSPaymentSubsidiary, NSPaymentBankAcct, NSAppliedToType, NSAppliedToDocNo, NSAppliedToAmount, NSAppliedToCurrency}]" DataTable="[PaymentDetailsDT]" DisplayName="Add Data Row - Payment Details" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_2" />
-                                              </Sequence>
-                                            </ActivityAction>
-                                          </ui:ForEach.Body>
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </ui:ForEach>
-                                      </Sequence>
-                                    </Sequence>
-                                  </Sequence>
-                                </ui:CommentOut.Body>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </ui:CommentOut>
                               <If Condition="[PaymentDetailsDT.Rows.Count &gt; 0]" DisplayName="If - Payment Details Found" sap:VirtualizedContainerService.HintSize="783,852" sap2010:WorkflowViewState.IdRef="If_5">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
