@@ -8,7 +8,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>962,1068</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>951,1110</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SelectInputFileForm_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="33">
@@ -80,7 +80,7 @@
       <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="SelectInputFileForm" sap:VirtualizedContainerService.HintSize="563,1003" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Presents a form to the user allowing them to choose an input file, retrieves the path of the selected file and outputs it." DisplayName="SelectInputFileForm" sap:VirtualizedContainerService.HintSize="563,1045" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="formOuput" />
       <Variable x:TypeArguments="njl:JObject" Name="formOutputJson" />
@@ -88,6 +88,7 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Select Input File Form" sap:VirtualizedContainerService.HintSize="521,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Waiting for user to select input file...&quot;]" />
@@ -109,12 +110,8 @@
         </ActivityAction>
       </ufa:FormActivity.DelayBody>
       <ufa:FormActivity.FormFieldsCollection>
-        <InArgument x:TypeArguments="x:String" x:Key="selectFileText">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_SelectFileLabel" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="disclaimer">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Disclaimer" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="selectFileText">[in_SelectFileLabel]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="disclaimer">[in_Disclaimer]</InArgument>
       </ufa:FormActivity.FormFieldsCollection>
     </ufa:FormActivity>
     <If Condition="[Not(String.IsNullOrWhiteSpace(formOuput))]" DisplayName="If Form Submitted" sap:VirtualizedContainerService.HintSize="521,531" sap2010:WorkflowViewState.IdRef="If_1">

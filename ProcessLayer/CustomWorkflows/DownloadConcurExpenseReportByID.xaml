@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="DownloadConcurExpenseReportByID" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="DownloadConcurExpenseReportByID" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_ConcurExpensesURL" Type="InArgument(x:String)" />
     <x:Property Name="in_ExpenseReportID" Type="InArgument(x:String)" />
@@ -8,7 +8,7 @@
     <x:Property Name="in_ConcurPass" Type="InArgument(ss:SecureString)" />
     <x:Property Name="in_ConcurLoginURL" Type="InArgument(x:String)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>962,831</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>951,1861</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -76,10 +76,9 @@
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
       <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DownloadConcurReport" sap:VirtualizedContainerService.HintSize="499,746" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Opens IE page, log into Concur, navigates to the expense reports page, adds filter o Report ID and downloads the UiPath Detailed report for the provided expense report.&#xD;&#xA;Closes IE page after download is over.&#xD;&#xA;Blocks the user input while the UI sequence is ecxecuting." DisplayName="DownloadConcurReport" sap:VirtualizedContainerService.HintSize="617,1796" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="ui:UiElement" Name="ExpenseReportElement" />
       <Variable x:TypeArguments="ui:Browser" Name="ConcurBrowser" />
@@ -87,48 +86,41 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message - Download Expense Report" sap:VirtualizedContainerService.HintSize="457,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Downloading Concur expense report...&quot;]" />
-    <ui:BlockUserInput TimeoutMS="{x:Null}" BlockType="All" DisplayName="Block User Input - Until Download Complete" sap:VirtualizedContainerService.HintSize="457,523" sap2010:WorkflowViewState.IdRef="BlockUserInput_1" KeyModifiers="Ctrl" Keys="tab" SpecialKey="True">
+    <ui:LogMessage DisplayName="Log Message - Download Expense Report" sap:VirtualizedContainerService.HintSize="575,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Downloading Concur expense report...&quot;]" />
+    <ui:BlockUserInput TimeoutMS="{x:Null}" BlockType="All" DisplayName="Block User Input - Until Download Complete" sap:VirtualizedContainerService.HintSize="575,1501" sap2010:WorkflowViewState.IdRef="BlockUserInput_1" KeyModifiers="Ctrl" Keys="tab" SpecialKey="True">
       <ui:BlockUserInput.Body>
-        <Sequence DisplayName="Do - Block Input To Download Expense Report" sap:VirtualizedContainerService.HintSize="421,357" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Do - Block Input To Download Expense Report" sap:VirtualizedContainerService.HintSize="539,1375" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ConcurLogin workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ProcessLayer\CustomWorkflows\ConcurLogin.xaml">
+          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ConcurLogin workflow" sap:VirtualizedContainerService.HintSize="497,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ProcessLayer\CustomWorkflows\ConcurLogin.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ConcurLoginURL">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ConcurLoginURL" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_ConcurUser">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_ConcurUser" />
-              </InArgument>
-              <InArgument x:TypeArguments="ss:SecureString" x:Key="in_ConcurPass">
-                <mva:VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="in_ConcurPass" />
-              </InArgument>
-              <OutArgument x:TypeArguments="ui:Browser" x:Key="out_ConcurBrowser">
-                <mva:VisualBasicReference x:TypeArguments="ui:Browser" ExpressionText="ConcurBrowser" />
-              </OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ConcurLoginURL">[in_ConcurLoginURL]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_ConcurUser">[in_ConcurUser]</InArgument>
+              <InArgument x:TypeArguments="ss:SecureString" x:Key="in_ConcurPass">[in_ConcurPass]</InArgument>
+              <OutArgument x:TypeArguments="ui:Browser" x:Key="out_ConcurBrowser">[ConcurBrowser]</OutArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
-          <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Browser="[ConcurBrowser]" DisplayName="Attach Browser - Cocur" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[ConcurBrowser]">
+          <ui:BrowserScope BrowserType="{x:Null}" SearchScope="{x:Null}" Selector="{x:Null}" TimeoutMS="{x:Null}" Browser="[ConcurBrowser]" DisplayName="Attach Browser - Cocur" sap:VirtualizedContainerService.HintSize="497,1069" sap2010:WorkflowViewState.IdRef="BrowserScope_1" UiBrowser="[ConcurBrowser]">
             <ui:BrowserScope.Body>
               <ActivityAction x:TypeArguments="x:Object">
                 <ActivityAction.Argument>
                   <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                 </ActivityAction.Argument>
-                <Sequence DisplayName="Do - Download Expense Report" sap:VirtualizedContainerService.HintSize="376,531" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Do - Download Expense Report" sap:VirtualizedContainerService.HintSize="463,961" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window - Concur Browser" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
-                  <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To - Expenses URL" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[in_ConcurExpensesURL]" />
-                  <Sequence DisplayName="Find Expense Report" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window - Concur Browser" sap:VirtualizedContainerService.HintSize="421,22" sap2010:WorkflowViewState.IdRef="MaximizeWindow_1" />
+                  <ui:NavigateTo Browser="{x:Null}" DisplayName="Navigate To - Expenses URL" sap:VirtualizedContainerService.HintSize="421,59" sap2010:WorkflowViewState.IdRef="NavigateTo_1" Url="[in_ConcurExpensesURL]" />
+                  <Sequence DisplayName="Find Expense Report" sap:VirtualizedContainerService.HintSize="421,66" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -194,7 +186,7 @@
                       </ui:WaitUiElementAppear.Target>
                     </ui:WaitUiElementAppear>
                   </Sequence>
-                  <Sequence DisplayName="Open Expense Report" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Sequence DisplayName="Open Expense Report" sap:VirtualizedContainerService.HintSize="421,66" sap2010:WorkflowViewState.IdRef="Sequence_6">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -268,10 +260,10 @@
                       </ui:Click.Target>
                     </ui:Click>
                   </Sequence>
-                  <Sequence DisplayName="Download And Close Expense Report" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <Sequence DisplayName="Download And Close Expense Report" sap:VirtualizedContainerService.HintSize="421,496" sap2010:WorkflowViewState.IdRef="Sequence_7">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -305,7 +297,7 @@
                         <InArgument x:TypeArguments="x:String" x:Key="in_DownloadURL" />
                       </ui:InvokeWorkflowFile.Arguments>
                     </ui:InvokeWorkflowFile>
-                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click - Close Expense Report" sap:VirtualizedContainerService.HintSize="379,106" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DelayBefore="1000" DisplayName="Click - Close Expense Report" sap:VirtualizedContainerService.HintSize="379,106" sap2010:WorkflowViewState.IdRef="Click_6" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
                       <ui:Click.CursorPosition>
                         <ui:CursorPosition Position="Center">
                           <ui:CursorPosition.OffsetX>
@@ -333,12 +325,12 @@
             </ui:BrowserScope.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:BrowserScope>
-          <ui:CloseTab Browser="[ConcurBrowser]" DisplayName="Close Tab - Concur" sap:VirtualizedContainerService.HintSize="379,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
+          <ui:CloseTab Browser="[ConcurBrowser]" DisplayName="Close Tab - Concur" sap:VirtualizedContainerService.HintSize="497,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
         </Sequence>
       </ui:BlockUserInput.Body>
     </ui:BlockUserInput>

@@ -5,7 +5,7 @@
     <x:Property Name="in_ConcurPass" Type="InArgument(ss:SecureString)" />
     <x:Property Name="out_ConcurBrowser" Type="OutArgument(ui:Browser)" />
   </x:Members>
-  <sap:VirtualizedContainerService.HintSize>849,1479</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>951,1521</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
@@ -73,10 +73,11 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ConcurLogin" sap:VirtualizedContainerService.HintSize="587,1414" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Opens IE browser on the Concur login page and logs into Concur.&#xD;&#xA;User input will be blocked during the execution of this UI sequence." DisplayName="ConcurLogin" sap:VirtualizedContainerService.HintSize="587,1456" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message - Log In To Concur" sap:VirtualizedContainerService.HintSize="545,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Logging in to Concur...&quot;]" />

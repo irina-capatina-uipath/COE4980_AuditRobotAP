@@ -21,7 +21,7 @@
   <this:GetNSJournals.in_VendorBillInternalID>
     <InArgument x:TypeArguments="x:String" />
   </this:GetNSJournals.in_VendorBillInternalID>
-  <sap:VirtualizedContainerService.HintSize>962,1387</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>951,1429</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="26">
@@ -91,7 +91,7 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Journal Payment" sap:VirtualizedContainerService.HintSize="526,1322" sap2010:WorkflowViewState.IdRef="Sequence_6">
+  <Sequence sap2010:Annotation.AnnotationText="Retrieves information about NS Journals applied to a NS Vendor Bill. Not used in the current flow." DisplayName="Journal Payment" sap:VirtualizedContainerService.HintSize="526,1364" sap2010:WorkflowViewState.IdRef="Sequence_6">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(nn:JournalEntry)" Name="NSJournalsApplied" />
     </Sequence.Variables>
@@ -99,6 +99,7 @@
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <n:getJournalsAppliedToVendorBill AccountName="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" TokenID="{x:Null}" TokenSecret="{x:Null}" DisplayName="Get journals applied to vendor bill" HeaderCredentials="[in_NSHeaderCredentials]" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="getJournalsAppliedToVendorBill_1" IsProduction="[in_NSIsProd]" JournalEntryList="[NSJournalsApplied]" VendorBillInternalID="[in_VendorBillInternalID]" />

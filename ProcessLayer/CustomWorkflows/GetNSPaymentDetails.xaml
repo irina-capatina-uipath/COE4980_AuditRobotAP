@@ -13,7 +13,7 @@
   <this:GetNSPaymentDetails.in_NSHeaderCredentials>
     <InArgument x:TypeArguments="n:HeaderCredentials" />
   </this:GetNSPaymentDetails.in_NSHeaderCredentials>
-  <sap:VirtualizedContainerService.HintSize>962,2211</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>951,2228</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -86,7 +86,7 @@
       <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetNSBillPaymentDetails" sap:VirtualizedContainerService.HintSize="845,2106" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Retrieves details about supporting documents for the current Netsuite vendor bill.&#xD;&#xA;Retrieves vendor payments related to the vendor bill. All other type of payments (e.g. NS Journals) are retrieved through a Netsuite saved search.&#xD;&#xA;Outputs information to a data table." DisplayName="GetNSBillPaymentDetails" sap:VirtualizedContainerService.HintSize="845,2163" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="NSAppliedToType" />
       <Variable x:TypeArguments="x:String" Name="NSAppliedToDocNo" />
@@ -112,6 +112,7 @@
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Assign DisplayName="Assign - Amount Format" sap:VirtualizedContainerService.HintSize="803,60" sap2010:WorkflowViewState.IdRef="Assign_1">
