@@ -1,14 +1,16 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CleanupAndPrep" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CleanupAndPrep" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="io_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="out_SharepointPass" Type="OutArgument(ss:SecureString)" />
+    <x:Property Name="out_SharepointUser" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>962,1104</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>854,1590</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CleanupAndPrep_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="23">
+    <scg:List x:TypeArguments="x:String" Capacity="28">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -32,10 +34,15 @@
       <x:String>System.Windows.Markup</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>UiPathTeam.SharePoint</x:String>
+      <x:String>Microsoft.SharePoint.Client</x:String>
+      <x:String>UiPathTeam.SharePoint.Activities</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="27">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="28">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -62,18 +69,26 @@
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPathTeam.SharePoint.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="This workflow runs only once per process execution. You can prepare your application environment. " DisplayName="CleanupAndPrep" sap:VirtualizedContainerService.HintSize="839,1039" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="This workflow runs only once per process execution. You can prepare your application environment. " DisplayName="CleanupAndPrep" sap:VirtualizedContainerService.HintSize="463,1485" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="SupportDocumentsFolder" />
+      <Variable x:TypeArguments="x:Boolean" Name="DownloadsFolderExists" />
+      <Variable x:TypeArguments="x:String" Name="RunFolderPath" />
+      <Variable x:TypeArguments="x:String" Name="RunFolderName" />
+      <Variable x:TypeArguments="x:String" Name="InitialSharepointUploadFolder" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log message - Kill apps" sap:VirtualizedContainerService.HintSize="797,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Killing all applications in environment&quot;]" />
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Start from a clean environment" DisplayName="Invoke KillAllProcesses workflow" sap:VirtualizedContainerService.HintSize="797,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ProcessLayer\KillAllProcesses.xaml">
+    <ui:LogMessage DisplayName="Log message - Kill apps" sap:VirtualizedContainerService.HintSize="421,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Killing all applications in environment&quot;]" />
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Start from a clean environment" DisplayName="Invoke KillAllProcesses workflow" sap:VirtualizedContainerService.HintSize="421,143" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ProcessLayer\KillAllProcesses.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <scg:Dictionary x:TypeArguments="x:String, Argument" />
       </ui:InvokeWorkflowFile.Arguments>
@@ -83,17 +98,29 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <Sequence DisplayName="Initilize Downloads Folder" sap:VirtualizedContainerService.HintSize="797,602" sap2010:WorkflowViewState.IdRef="Sequence_3">
-      <Sequence.Variables>
-        <Variable x:TypeArguments="x:Boolean" Name="DownloadsFolderExists" />
-      </Sequence.Variables>
+    <Sequence DisplayName="Initilize Downloads Folder" sap:VirtualizedContainerService.HintSize="421,66" sap2010:WorkflowViewState.IdRef="Sequence_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:PathExists DisplayName="Path Exists - Downloads Folder" Exists="[DownloadsFolderExists]" sap:VirtualizedContainerService.HintSize="755,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[Path.Combine(System.Environment.CurrentDirectory, in_Config(&quot;SupportDocumentsFolder&quot;).ToString)]" PathType="Folder" />
-      <If Condition="[DownloadsFolderExists]" DisplayName="If - Downloads Folder Exists" sap:VirtualizedContainerService.HintSize="755,381" sap2010:WorkflowViewState.IdRef="If_1">
+      <Assign DisplayName="Assign - Local Documents Folder" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[SupportDocumentsFolder]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[Path.Combine(System.Environment.CurrentDirectory, io_Config("SupportDocumentsFolder").ToString)]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <ui:PathExists DisplayName="Path Exists - Downloads Folder" Exists="[DownloadsFolderExists]" sap:VirtualizedContainerService.HintSize="334,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[SupportDocumentsFolder]" PathType="Folder" />
+      <If Condition="[DownloadsFolderExists]" DisplayName="If - Downloads Folder Exists" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
         <If.Then>
           <Sequence DisplayName="Recreate Downloads Folder" sap:VirtualizedContainerService.HintSize="376,233" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
@@ -101,14 +128,135 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - Downloads Folder" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[Path.Combine(System.Environment.CurrentDirectory, in_Config(&quot;SupportDocumentsFolder&quot;).ToString)]" />
-            <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder - Downloads Folder (After Delete)" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[Path.Combine(System.Environment.CurrentDirectory, in_Config(&quot;SupportDocumentsFolder&quot;).ToString)]" />
+            <ui:Delete ContinueOnError="{x:Null}" DisplayName="Delete - Downloads Folder" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[SupportDocumentsFolder]" />
+            <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder - Downloads Folder (After Delete)" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[SupportDocumentsFolder]" />
           </Sequence>
         </If.Then>
         <If.Else>
-          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder - Downloads Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[Path.Combine(System.Environment.CurrentDirectory, in_Config(&quot;SupportDocumentsFolder&quot;).ToString)]" />
+          <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder - Downloads Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[SupportDocumentsFolder]" />
         </If.Else>
       </If>
+    </Sequence>
+    <Sequence DisplayName="Create Local Run Folder" sap:VirtualizedContainerService.HintSize="421,66" sap2010:WorkflowViewState.IdRef="Sequence_4">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:MultipleAssign DisplayName="Multiple Assign Local Folders Paths" sap:VirtualizedContainerService.HintSize="334,191" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[RunFolderName]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[Now.ToString(io_Config("TimestampFolderDateFormat").ToString)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[RunFolderPath]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[Path.Combine(SupportDocumentsFolder, RunFolderName)]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Object">[io_Config("RunFolderName")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Object">[RunFolderName]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Object">[io_Config("RunFolderPath")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Object">[RunFolderPath]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder - Run Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_3" Path="[RunFolderPath]" />
+    </Sequence>
+    <Sequence DisplayName="Initialize Sharepoint" sap:VirtualizedContainerService.HintSize="421,825" sap2010:WorkflowViewState.IdRef="Sequence_6">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="InitialSharepointCreateFolderURL" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:LogMessage DisplayName="Log Message - Connect To Sharepoint" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Connecting to Sharepoint...&quot;]" />
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetAppCredentials workflow - Get Sharepoint Credentials" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\GetAppCredentials.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <OutArgument x:TypeArguments="x:String" x:Key="out_Username">[out_SharepointUser]</OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_Credential">[io_Config("SharepointCredentials").ToString]</InArgument>
+          <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_Password">[out_SharepointPass]</OutArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_OrchestratorFolder">[io_Config("OrchestratorFolder").ToString]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:MultipleAssign DisplayName="Multiple Assign - Initial Sharepoint Upload Folders" sap:VirtualizedContainerService.HintSize="379,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[InitialSharepointCreateFolderURL]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[io_Config("SharepointCreateFolderURL").ToString]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:String">[InitialSharepointUploadFolder]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:String">[io_Config("SharepointUploadFolderURL").ToString]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
+      <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CreateSharepointTimestampFolder workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="ProcessLayer\CustomWorkflows\CreateSharepointTimestampFolder.xaml">
+        <ui:InvokeWorkflowFile.Arguments>
+          <InArgument x:TypeArguments="x:String" x:Key="in_SharepointUser">[out_SharepointUser]</InArgument>
+          <InArgument x:TypeArguments="ss:SecureString" x:Key="in_SharepointPass">[out_SharepointPass]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_SharepointBaseURL">[io_Config("SharepointSiteURL").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_SharepointLibraryName">[io_Config("SharepointLibrary").ToString]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_SharepointDestinationFolder">[InitialSharepointCreateFolderURL]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="in_NewFolderName">[RunFolderName]</InArgument>
+        </ui:InvokeWorkflowFile.Arguments>
+      </ui:InvokeWorkflowFile>
+      <ui:MultipleAssign DisplayName="Multiple Assign - New Sharepoint Upload Folders" sap:VirtualizedContainerService.HintSize="379,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+        <ui:MultipleAssign.AssignOperations>
+          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Object">[io_Config("SharepointCreateFolderURL")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Object">[InitialSharepointCreateFolderURL + RunFolderName + "/"]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+              <ui:AssignOperation.To>
+                <OutArgument x:TypeArguments="x:Object">[io_Config("SharepointUploadFolderURL")]</OutArgument>
+              </ui:AssignOperation.To>
+              <ui:AssignOperation.Value>
+                <InArgument x:TypeArguments="x:Object">[InitialSharepointUploadFolder + RunFolderName + "/"]</InArgument>
+              </ui:AssignOperation.Value>
+            </ui:AssignOperation>
+          </scg:List>
+        </ui:MultipleAssign.AssignOperations>
+      </ui:MultipleAssign>
     </Sequence>
   </Sequence>
 </Activity>

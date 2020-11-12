@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="962,1721" sap2010:WorkflowViewState.IdRef="Main2_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:n="clr-namespace:NetsuiteActivities;assembly=NetsuiteActivities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="939,1761" sap2010:WorkflowViewState.IdRef="Main2_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:n="clr-namespace:NetsuiteActivities;assembly=NetsuiteActivities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="36">
       <x:String>System.Activities</x:String>
@@ -73,7 +73,6 @@
       <AssemblyReference>UiPathTeam.SharePoint</AssemblyReference>
       <AssemblyReference>OfficeDevPnP.Core</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>UiPath.Form.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
@@ -351,16 +350,16 @@
                   <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="TransactionItem Is Nothing And SystemError is Nothing" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
                 </Transition.Condition>
                 <Transition.To>
-                  <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="##Framework Layer##&#xA;Process stops here as a result of no more data(TransactionItem is Nothing), an exception in the Data Layer, successive exceptions in the Init state, consecutive exceptions in the Process state." DisplayName="End Process State" sap:VirtualizedContainerService.HintSize="273,163" sap2010:WorkflowViewState.IdRef="State_5" IsFinal="True">
+                  <State x:Name="__ReferenceID1" sap2010:Annotation.AnnotationText="##Framework Layer##&#xA;Process stops here as a result of no more data(TransactionItem is Nothing), an exception in the Data Layer, successive exceptions in the Init state, consecutive exceptions in the Process state." DisplayName="End Process State" sap:VirtualizedContainerService.HintSize="509,1448" sap2010:WorkflowViewState.IdRef="State_5" IsFinal="True">
                     <State.Entry>
-                      <Sequence sap2010:Annotation.AnnotationText="End Process State" DisplayName="End Process" sap:VirtualizedContainerService.HintSize="418,1171" sap2010:WorkflowViewState.IdRef="Sequence_405">
+                      <Sequence sap2010:Annotation.AnnotationText="End Process State" DisplayName="End Process" sap:VirtualizedContainerService.HintSize="463,1263" sap2010:WorkflowViewState.IdRef="Sequence_405">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence sap2010:Annotation.AnnotationText="This section is needed for the correct operation of the framework. Edits here break things." DisplayName="System - reserved (End Process)" sap:VirtualizedContainerService.HintSize="376,155" sap2010:WorkflowViewState.IdRef="Sequence_401">
+                        <Sequence sap2010:Annotation.AnnotationText="This section is needed for the correct operation of the framework. Edits here break things." DisplayName="System - reserved (End Process)" sap:VirtualizedContainerService.HintSize="421,155" sap2010:WorkflowViewState.IdRef="Sequence_401">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -369,7 +368,7 @@
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                         </Sequence>
-                        <Sequence sap2010:Annotation.AnnotationText="Call Business Process Layer" DisplayName="Business Process Layer Interface (End Process)" sap:VirtualizedContainerService.HintSize="376,945" sap2010:WorkflowViewState.IdRef="Sequence_403">
+                        <Sequence sap2010:Annotation.AnnotationText="Call Business Process Layer" DisplayName="Business Process Layer Interface (End Process)" sap:VirtualizedContainerService.HintSize="421,945" sap2010:WorkflowViewState.IdRef="Sequence_403">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -377,12 +376,12 @@
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow (End)" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_146" UnSafe="False" WorkflowFileName="ProcessLayer\CloseAllApplications.xaml">
+                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CloseAllApplications workflow (End)" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_146" UnSafe="False" WorkflowFileName="ProcessLayer\CloseAllApplications.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
                               <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
-                          <Sequence sap2010:Annotation.AnnotationText="Under a set of conditions, we wish to abort the applications and not consume the exception. This will register as a failed job in Orchestrator, and we can send a notification email" DisplayName="Abort Application conditions (End Process)" sap:VirtualizedContainerService.HintSize="334,412" sap2010:WorkflowViewState.IdRef="Sequence_402">
+                          <Sequence sap2010:Annotation.AnnotationText="Under a set of conditions, we wish to abort the applications and not consume the exception. This will register as a failed job in Orchestrator, and we can send a notification email" DisplayName="Abort Application conditions (End Process)" sap:VirtualizedContainerService.HintSize="379,412" sap2010:WorkflowViewState.IdRef="Sequence_402">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -442,7 +441,7 @@
                               </If.Then>
                             </If>
                           </Sequence>
-                          <Sequence DisplayName="Update Input File" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_415">
+                          <Sequence DisplayName="Update Input File" sap:VirtualizedContainerService.HintSize="376,338" sap2010:WorkflowViewState.IdRef="Sequence_415">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -452,14 +451,10 @@
                             <ui:LogMessage DisplayName="Log Message - Update Input File" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_52" Level="Info" Message="[&quot;Writing data back to input file...&quot;]" />
                             <ui:WriteRange AddHeaders="True" DataTable="[TransactionData]" DisplayName="Write Range - Updated Input File" sap:VirtualizedContainerService.HintSize="334,115" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[Config(&quot;InputFileSheetName&quot;).ToString]" StartingCell="A1" WorkbookPath="[InputFilePath]" />
                           </Sequence>
-                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ProcessEndedForm workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_149" UnSafe="False" WorkflowFileName="ProcessEndedForm.xaml">
+                          <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ProcessEndedForm workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_149" UnSafe="False" WorkflowFileName="ProcessLayer\CustomWorkflows\ProcessEndedForm.xaml">
                             <ui:InvokeWorkflowFile.Arguments>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_FormTitle">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;SelectFileFormTitle&quot;).ToString" />
-                              </InArgument>
-                              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessEndedText">
-                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Config(&quot;ProcessEndedText&quot;).ToString" />
-                              </InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_FormTitle">[Config("SelectFileFormTitle").ToString]</InArgument>
+                              <InArgument x:TypeArguments="x:String" x:Key="in_ProcessEndedText">[Config("ProcessEndedText").ToString]</InArgument>
                             </ui:InvokeWorkflowFile.Arguments>
                           </ui:InvokeWorkflowFile>
                         </Sequence>
@@ -535,36 +530,16 @@
                               </ui:InvokeWorkflowFile>
                               <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ProcessTransaction workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_135" UnSafe="False" WorkflowFileName="ProcessLayer\ProcessTransaction.xaml">
                                 <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_wbParentPath">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="wbPath" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                    <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                  </InArgument>
-                                  <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_TransactionItem">
-                                    <mva:VisualBasicReference x:TypeArguments="sd:DataRow" ExpressionText="TransactionItem" />
-                                  </InOutArgument>
-                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_TransactionNumber">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(SystemReserved.Item(&quot;TransactionNumber&quot;))" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="cint(SystemReserved.Item(&quot;RetryNumber&quot;))" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="n:HeaderCredentials" x:Key="in_NSHeaderCredentials">
-                                    <mva:VisualBasicValue x:TypeArguments="n:HeaderCredentials" ExpressionText="NSHeaderCredentials" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_NSIsProd">
-                                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="NSIsProd" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_SharepointUser">
-                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="SharepointUser" />
-                                  </InArgument>
-                                  <InArgument x:TypeArguments="ss:SecureString" x:Key="in_SharepointPass">
-                                    <mva:VisualBasicValue x:TypeArguments="ss:SecureString" ExpressionText="SharepointPass" />
-                                  </InArgument>
-                                  <OutArgument x:TypeArguments="x:String" x:Key="out_Comments">
-                                    <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="TransactionComments" />
-                                  </OutArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_wbParentPath">[wbPath]</InArgument>
+                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                                  <InOutArgument x:TypeArguments="sd:DataRow" x:Key="io_TransactionItem">[TransactionItem]</InOutArgument>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_TransactionNumber">[cint(SystemReserved.Item("TransactionNumber"))]</InArgument>
+                                  <InArgument x:TypeArguments="x:Int32" x:Key="in_RetryNumber">[cint(SystemReserved.Item("RetryNumber"))]</InArgument>
+                                  <InArgument x:TypeArguments="n:HeaderCredentials" x:Key="in_NSHeaderCredentials">[NSHeaderCredentials]</InArgument>
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_NSIsProd">[NSIsProd]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_SharepointUser">[SharepointUser]</InArgument>
+                                  <InArgument x:TypeArguments="ss:SecureString" x:Key="in_SharepointPass">[SharepointPass]</InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_Comments">[TransactionComments]</OutArgument>
                                 </ui:InvokeWorkflowFile.Arguments>
                               </ui:InvokeWorkflowFile>
                             </Sequence>
@@ -852,7 +827,7 @@
                         <Transition.To>
                           <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="##Framework Layer##&#xA;Read Config. Initialize all applications. Recover the environment from System Error by Closing and Initializing all applications." DisplayName="Init State" sap:VirtualizedContainerService.HintSize="262,148" sap2010:WorkflowViewState.IdRef="State_8">
                             <State.Entry>
-                              <TryCatch sap2010:Annotation.AnnotationText="Initialization state guard" DisplayName="Init" sap:VirtualizedContainerService.HintSize="685,2098" sap2010:WorkflowViewState.IdRef="TryCatch_33">
+                              <TryCatch sap2010:Annotation.AnnotationText="Initialization state guard" DisplayName="Init" sap:VirtualizedContainerService.HintSize="643,1489" sap2010:WorkflowViewState.IdRef="TryCatch_33">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -861,14 +836,14 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <TryCatch.Try>
-                                  <Sequence DisplayName="Try processing Init" sap:VirtualizedContainerService.HintSize="647,1840" sap2010:WorkflowViewState.IdRef="Sequence_346">
+                                  <Sequence DisplayName="Try processing Init" sap:VirtualizedContainerService.HintSize="605,1231" sap2010:WorkflowViewState.IdRef="Sequence_346">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <Sequence sap2010:Annotation.AnnotationText="This section is needed for the correct operation of the framework. Edits here break things." DisplayName="System - Reserved (Init)" sap:VirtualizedContainerService.HintSize="605,1473" sap2010:WorkflowViewState.IdRef="Sequence_343">
+                                    <Sequence sap2010:Annotation.AnnotationText="This section is needed for the correct operation of the framework. Edits here break things." DisplayName="System - Reserved (Init)" sap:VirtualizedContainerService.HintSize="563,864" sap2010:WorkflowViewState.IdRef="Sequence_343">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -876,7 +851,7 @@
                                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <If Condition="[Config is Nothing]" DisplayName="If first run - read Config file" sap:VirtualizedContainerService.HintSize="563,635" sap2010:WorkflowViewState.IdRef="If_73">
+                                      <If Condition="[Config is Nothing]" DisplayName="If first run - read Config file" sap:VirtualizedContainerService.HintSize="521,635" sap2010:WorkflowViewState.IdRef="If_73">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -901,16 +876,18 @@
                                             </ui:InvokeWorkflowFile>
                                             <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke CleanupAndPrep workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_148" UnSafe="False" WorkflowFileName="ProcessLayer\CleanupAndPrep.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
-                                                <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                                                <InOutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="io_Config">[Config]</InOutArgument>
+                                                <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_SharepointPass">[SharepointPass]</OutArgument>
+                                                <OutArgument x:TypeArguments="x:String" x:Key="out_SharepointUser">[SharepointUser]</OutArgument>
                                               </ui:InvokeWorkflowFile.Arguments>
                                             </ui:InvokeWorkflowFile>
                                           </Sequence>
                                         </If.Then>
                                       </If>
-                                      <Sequence DisplayName="Reset Env in case of SystemError" sap:VirtualizedContainerService.HintSize="563,675" sap2010:WorkflowViewState.IdRef="Sequence_342">
+                                      <Sequence DisplayName="Reset Env in case of SystemError" sap:VirtualizedContainerService.HintSize="521,66" sap2010:WorkflowViewState.IdRef="Sequence_342">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
@@ -947,7 +924,7 @@
                                         </Assign>
                                       </Sequence>
                                     </Sequence>
-                                    <Sequence sap2010:Annotation.AnnotationText="Call Business Process Layer" DisplayName="Business Process Layer Interface" sap:VirtualizedContainerService.HintSize="605,235" sap2010:WorkflowViewState.IdRef="Sequence_344">
+                                    <Sequence sap2010:Annotation.AnnotationText="Call Business Process Layer" DisplayName="Business Process Layer Interface" sap:VirtualizedContainerService.HintSize="563,235" sap2010:WorkflowViewState.IdRef="Sequence_344">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -960,8 +937,6 @@
                                           <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
                                           <OutArgument x:TypeArguments="x:Boolean" x:Key="out_NSIsProd">[NSIsProd]</OutArgument>
                                           <OutArgument x:TypeArguments="n:HeaderCredentials" x:Key="out_NSHeaderCredentials">[NSHeaderCredentials]</OutArgument>
-                                          <OutArgument x:TypeArguments="x:String" x:Key="out_SharepointUser">[SharepointUser]</OutArgument>
-                                          <OutArgument x:TypeArguments="ss:SecureString" x:Key="out_SharepointPass">[SharepointPass]</OutArgument>
                                         </ui:InvokeWorkflowFile.Arguments>
                                       </ui:InvokeWorkflowFile>
                                     </Sequence>

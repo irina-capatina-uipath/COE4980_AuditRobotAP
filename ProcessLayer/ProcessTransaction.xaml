@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>962,2046</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>944,2151</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="35">
@@ -56,7 +56,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="34">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="33">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -92,7 +92,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <TryCatch sap2010:Annotation.AnnotationText="##Business Process Layer##&#xA;Description: In this file all other process specific files will be invoked. If an application exception occurs, the current transaction can be retried. If a BRE is thrown, the transaction will be skipped. Can be a flowchart or sequence. " DisplayName="wbProcess" sap:VirtualizedContainerService.HintSize="954,1981" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+  <TryCatch sap2010:Annotation.AnnotationText="##Business Process Layer##&#xA;Description: In this file all other process specific files will be invoked. If an application exception occurs, the current transaction can be retried. If a BRE is thrown, the transaction will be skipped. Can be a flowchart or sequence. " DisplayName="wbProcess" sap:VirtualizedContainerService.HintSize="954,2046" sap2010:WorkflowViewState.IdRef="TryCatch_4">
     <TryCatch.Variables>
       <Variable x:TypeArguments="x:String" Name="wbPath" />
       <Variable x:TypeArguments="x:String" Name="wbName" />
@@ -105,7 +105,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <TryCatch.Try>
-      <Sequence DisplayName="Try processing wbProcess" sap:VirtualizedContainerService.HintSize="916,1697" sap2010:WorkflowViewState.IdRef="Sequence_47">
+      <Sequence DisplayName="Try processing wbProcess" sap:VirtualizedContainerService.HintSize="916,1762" sap2010:WorkflowViewState.IdRef="Sequence_47">
         <Sequence.Variables>
           <Variable x:TypeArguments="x:Boolean" Name="TransactionFound" />
           <Variable x:TypeArguments="scg:List(nn:JournalEntry)" Name="NSJournalEntries" />
@@ -203,7 +203,7 @@
           </ui:AddLogFields>
           <ui:LogMessage DisplayName="Log execution started message" sap:VirtualizedContainerService.HintSize="314,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[wbPath + &quot; execution started.&quot;]" />
         </Sequence>
-        <Flowchart sap2010:Annotation.AnnotationText="#Write business code here#" DisplayName="Process" sap:VirtualizedContainerService.HintSize="874,845" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+        <Flowchart sap2010:Annotation.AnnotationText="#Write business code here#" DisplayName="Process" sap:VirtualizedContainerService.HintSize="874,910" sap2010:WorkflowViewState.IdRef="Flowchart_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -213,13 +213,13 @@
               <av:Size x:Key="ShapeSize">60,75</av:Size>
               <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,127.5</av:PointCollection>
               <x:Double x:Key="Width">840</x:Double>
-              <x:Double x:Key="Height">777.56</x:Double>
+              <x:Double x:Key="Height">843</x:Double>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <Flowchart.StartNode>
-            <x:Reference>__ReferenceID7</x:Reference>
+            <x:Reference>__ReferenceID8</x:Reference>
           </Flowchart.StartNode>
-          <FlowStep x:Name="__ReferenceID7">
+          <FlowStep x:Name="__ReferenceID8">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <av:Point x:Key="ShapeLocation">200,127.5</av:Point>
@@ -384,20 +384,46 @@
                         <av:PointCollection x:Key="ConnectorLocation">450,404.58 450,446.5</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Create Local Folder" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_84">
+                    <Sequence DisplayName="Create Local Folders" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_84">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:String" Name="TimestampFolder" />
+                        <Variable x:TypeArguments="x:String" Name="TransactionFolderName" />
+                      </Sequence.Variables>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign DisplayName="Assign - Transaction Local Folder" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_16">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:String">[TransactionFolder]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">[Path.Combine(System.Environment.CurrentDirectory, in_Config("SupportDocumentsFolder").ToString, DocumentNumber)]</InArgument>
-                        </Assign.Value>
-                      </Assign>
+                      <ui:MultipleAssign DisplayName="Multiple Assign Local Folders Paths" sap:VirtualizedContainerService.HintSize="334,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_10">
+                        <ui:MultipleAssign.AssignOperations>
+                          <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_33">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:String">[TimestampFolder]</OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:String">[in_Config("RunFolderPath").ToString]</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_34">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:String">[TransactionFolderName]</OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:String">[DocumentNumber]</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                            <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_35">
+                              <ui:AssignOperation.To>
+                                <OutArgument x:TypeArguments="x:String">[TransactionFolder]</OutArgument>
+                              </ui:AssignOperation.To>
+                              <ui:AssignOperation.Value>
+                                <InArgument x:TypeArguments="x:String">[Path.Combine(TimestampFolder, TransactionFolderName)]</InArgument>
+                              </ui:AssignOperation.Value>
+                            </ui:AssignOperation>
+                          </scg:List>
+                        </ui:MultipleAssign.AssignOperations>
+                      </ui:MultipleAssign>
                       <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder - Transation Folder" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[TransactionFolder]" />
                     </Sequence>
                     <FlowStep.Next>
@@ -417,10 +443,10 @@
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <av:Point x:Key="ShapeLocation">200,547</av:Point>
                                 <av:Size x:Key="ShapeSize">200,66</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">300,613 300,680 350,680</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">300,613 300,810 350,810</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence DisplayName="Concur " sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_73">
+                            <Sequence DisplayName="Concur  - Download Expense Report" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_73">
                               <Sequence.Variables>
                                 <Variable x:TypeArguments="x:String" Name="ConcurUser" />
                                 <Variable x:TypeArguments="ss:SecureString" Name="ConcurPassword" />
@@ -455,11 +481,11 @@
                               <FlowStep x:Name="__ReferenceID0">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <av:Point x:Key="ShapeLocation">350,647</av:Point>
+                                    <av:Point x:Key="ShapeLocation">350,777</av:Point>
                                     <av:Size x:Key="ShapeSize">200,66</av:Size>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <Sequence DisplayName="Upload Files To Sharepoint" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_86">
+                                <Sequence DisplayName="Upload Files To Sharepoint" sap:VirtualizedContainerService.HintSize="421,204" sap2010:WorkflowViewState.IdRef="Sequence_86">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -473,7 +499,7 @@
                                       <InArgument x:TypeArguments="x:String" x:Key="in_LocalFolderPath">[TransactionFolder]</InArgument>
                                       <InArgument x:TypeArguments="x:String" x:Key="in_SharepointDestinationFolder">[in_Config("SharepointCreateFolderURL").ToString]</InArgument>
                                       <InArgument x:TypeArguments="x:String" x:Key="in_SharepointLibraryName">[in_Config("SharepointLibrary").ToString]</InArgument>
-                                      <InArgument x:TypeArguments="x:String" x:Key="in_SharepointUploadURL">[in_Config("ShraepointUploadFolderURL").ToString]</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_SharepointUploadURL">[in_Config("SharepointUploadFolderURL").ToString]</InArgument>
                                     </ui:InvokeWorkflowFile.Arguments>
                                   </ui:InvokeWorkflowFile>
                                 </Sequence>
@@ -487,156 +513,172 @@
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <av:Point x:Key="ShapeLocation">500,547</av:Point>
                                 <av:Size x:Key="ShapeSize">200,66</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">600,613 600,680 550,680</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">600,613 600,657</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence DisplayName="Netsuite" sap:VirtualizedContainerService.HintSize="825,1785" sap2010:WorkflowViewState.IdRef="Sequence_74">
+                            <Sequence DisplayName="Netsuite - Download Invoice" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_74">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="Download NS Invoice Attachment" sap:VirtualizedContainerService.HintSize="783,295" sap2010:WorkflowViewState.IdRef="Sequence_95">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DownloadNSBillAttachment workflow - Download Invoice" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ProcessLayer\CustomWorkflows\DownloadNSBillAttachment.xaml">
-                                  <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="n:HeaderCredentials" x:Key="in_NSHeaderCredentials">[in_NSHeaderCredentials]</InArgument>
-                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_NSIsProd">[in_NSIsProd]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_TargetPath">[Path.Combine(TransactionFolder, DocumentNumber)]</InArgument>
-                                    <OutArgument x:TypeArguments="x:String" x:Key="out_NSDownloadPath">[NSFileDownloadPath]</OutArgument>
-                                    <InArgument x:TypeArguments="nn:VendorBill" x:Key="in_NSBill">[NSBills(0)]</InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_NSScriptID">[in_Config("NSInvoiceScriptID").ToString]</InArgument>
-                                  </ui:InvokeWorkflowFile.Arguments>
-                                </ui:InvokeWorkflowFile>
-                                <If Condition="[String.IsNullOrWhiteSpace(NSFileDownloadPath)]" DisplayName="If - No Invoice Found" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="If_7">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <If.Then>
-                                    <Assign DisplayName="Assign - No Invoice Comments" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_20">
-                                      <Assign.To>
-                                        <OutArgument x:TypeArguments="x:String">[out_Comments]</OutArgument>
-                                      </Assign.To>
-                                      <Assign.Value>
-                                        <InArgument x:TypeArguments="x:String">[out_Comments + System.Environment.NewLine + in_Config("NoInvoiceAttachment").ToString]</InArgument>
-                                      </Assign.Value>
-                                    </Assign>
-                                  </If.Then>
-                                </If>
-                              </Sequence>
-                              <Sequence DisplayName="Read Payment Details Template" sap:VirtualizedContainerService.HintSize="783,66" sap2010:WorkflowViewState.IdRef="Sequence_87">
+                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke DownloadNSBillAttachment workflow - Download Invoice" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="ProcessLayer\CustomWorkflows\DownloadNSBillAttachment.xaml">
+                                <ui:InvokeWorkflowFile.Arguments>
+                                  <InArgument x:TypeArguments="n:HeaderCredentials" x:Key="in_NSHeaderCredentials">[in_NSHeaderCredentials]</InArgument>
+                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_NSIsProd">[in_NSIsProd]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_TargetPath">[Path.Combine(TransactionFolder, DocumentNumber)]</InArgument>
+                                  <OutArgument x:TypeArguments="x:String" x:Key="out_NSDownloadPath">[NSFileDownloadPath]</OutArgument>
+                                  <InArgument x:TypeArguments="nn:VendorBill" x:Key="in_NSBill">[NSBills(0)]</InArgument>
+                                  <InArgument x:TypeArguments="x:String" x:Key="in_NSScriptID">[in_Config("NSInvoiceScriptID").ToString]</InArgument>
+                                </ui:InvokeWorkflowFile.Arguments>
+                              </ui:InvokeWorkflowFile>
+                              <If Condition="[String.IsNullOrWhiteSpace(NSFileDownloadPath)]" DisplayName="If - No Invoice Found" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="If_7">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:LogMessage DisplayName="Log Message - Create Payment Details Table" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Creating payment details table...&quot;]" />
-                                <Assign DisplayName="Assign - Payment Template Path" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_18">
-                                  <Assign.To>
-                                    <OutArgument x:TypeArguments="x:String">[PaymentTemplatePath]</OutArgument>
-                                  </Assign.To>
-                                  <Assign.Value>
-                                    <InArgument x:TypeArguments="x:String">[Path.Combine(System.Environment.CurrentDirectory, in_Config("TemplatesFolder").ToString, in_Config("PaymentDetailsTemplateName").ToString)]</InArgument>
-                                  </Assign.Value>
-                                </Assign>
-                                <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[PaymentDetailsDT]" DisplayName="Read Range - Payment Details" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="[in_Config(&quot;PaymentDetailsSheetName&quot;).ToString]" WorkbookPath="[PaymentTemplatePath]" />
-                              </Sequence>
-                              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetNSPaymentDetails workflow" sap:VirtualizedContainerService.HintSize="783,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="GetNSPaymentDetails.xaml">
-                                <ui:InvokeWorkflowFile.Arguments>
-                                  <InArgument x:TypeArguments="x:Boolean" x:Key="in_NSIsProd">[in_NSIsProd]</InArgument>
-                                  <InArgument x:TypeArguments="n:HeaderCredentials" x:Key="in_NSHeaderCredentials">[in_NSHeaderCredentials]</InArgument>
-                                  <InArgument x:TypeArguments="x:String" x:Key="in_NSBillInternalID">[NSBills(0).internalId]</InArgument>
-                                  <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_PaymentDetailsDT">[PaymentDetailsDT]</InOutArgument>
-                                  <InOutArgument x:TypeArguments="x:String" x:Key="io_Comments">[out_Comments]</InOutArgument>
-                                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
-                                </ui:InvokeWorkflowFile.Arguments>
-                              </ui:InvokeWorkflowFile>
-                              <If Condition="[PaymentDetailsDT.Rows.Count &gt; 0]" DisplayName="If - Payment Details Found" sap:VirtualizedContainerService.HintSize="783,852" sap2010:WorkflowViewState.IdRef="If_5">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
                                 <If.Then>
-                                  <Sequence DisplayName="Create Payment Details File" sap:VirtualizedContainerService.HintSize="476,704" sap2010:WorkflowViewState.IdRef="Sequence_92">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <ui:LogMessage DisplayName="Log Message - Create Payment Details File" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Creating payment details file...&quot;]" />
-                                    <ui:MultipleAssign DisplayName="Multiple Assign - Payment Details File Variables" sap:VirtualizedContainerService.HintSize="434,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_8">
-                                      <ui:MultipleAssign.AssignOperations>
-                                        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
-                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_29">
-                                            <ui:AssignOperation.To>
-                                              <OutArgument x:TypeArguments="x:String">[PaymentDetailsFileName]</OutArgument>
-                                            </ui:AssignOperation.To>
-                                            <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[in_Config("PaymentDetailsFileName").ToString.Replace("&lt;DocumentNumber&gt;", io_TransactionItem(in_Config("DocNumberColumn").ToString).ToString)]</InArgument>
-                                            </ui:AssignOperation.Value>
-                                          </ui:AssignOperation>
-                                          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_30">
-                                            <ui:AssignOperation.To>
-                                              <OutArgument x:TypeArguments="x:String">[PaymentDetailsFilePath]</OutArgument>
-                                            </ui:AssignOperation.To>
-                                            <ui:AssignOperation.Value>
-                                              <InArgument x:TypeArguments="x:String">[Path.Combine(TransactionFolder, PaymentDetailsFileName)]</InArgument>
-                                            </ui:AssignOperation.Value>
-                                          </ui:AssignOperation>
-                                        </scg:List>
-                                      </ui:MultipleAssign.AssignOperations>
-                                    </ui:MultipleAssign>
-                                    <ui:CopyFile ContinueOnError="{x:Null}" Destination="[PaymentDetailsFilePath]" DisplayName="Copy File - Payment Details" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="CopyFile_2" Overwrite="True" Path="[PaymentTemplatePath]" />
-                                    <ui:WriteRange AddHeaders="True" DataTable="[PaymentDetailsDT]" DisplayName="Write Range - Payment Details" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="WriteRange_2" SheetName="[in_Config(&quot;PaymentDetailsSheetName&quot;).ToString]" StartingCell="A1" WorkbookPath="[PaymentDetailsFilePath]" />
-                                  </Sequence>
-                                </If.Then>
-                                <If.Else>
-                                  <Assign DisplayName="Assign - No Payment Details" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                  <Assign DisplayName="Assign - No Invoice Comments" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_20">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:String">[out_Comments]</OutArgument>
                                     </Assign.To>
                                     <Assign.Value>
-                                      <InArgument x:TypeArguments="x:String">[out_Comments + System.Environment.NewLine + in_Config("NoPaymentDetails").ToString]</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                </If.Else>
-                              </If>
-                              <If Condition="[String.IsNullOrWhiteSpace(out_Comments)]" DisplayName="If - No Comments" sap:VirtualizedContainerService.HintSize="783,208" sap2010:WorkflowViewState.IdRef="If_8">
-                                <If.Then>
-                                  <Assign DisplayName="Assign - No Comments" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_22">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:String">[out_Comments]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:String">[in_Config("NAKeyword").ToString]</InArgument>
+                                      <InArgument x:TypeArguments="x:String">[out_Comments + System.Environment.NewLine + in_Config("NoInvoiceAttachment").ToString]</InArgument>
                                     </Assign.Value>
                                   </Assign>
                                 </If.Then>
-                                <If.Else>
-                                  <Assign DisplayName="Assign - Trim Comments" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_24">
-                                    <Assign.To>
-                                      <OutArgument x:TypeArguments="x:String">[out_Comments]</OutArgument>
-                                    </Assign.To>
-                                    <Assign.Value>
-                                      <InArgument x:TypeArguments="x:String">[out_Comments.Trim]</InArgument>
-                                    </Assign.Value>
-                                  </Assign>
-                                </If.Else>
                               </If>
                             </Sequence>
                             <FlowStep.Next>
-                              <x:Reference>__ReferenceID0</x:Reference>
+                              <FlowStep x:Name="__ReferenceID7">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">500,657</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,66</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">600,723 600,810 550,810</av:PointCollection>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Sequence DisplayName="Get Payment Details" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_98">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Sequence DisplayName="Read Payment Details Template" sap:VirtualizedContainerService.HintSize="334,66" sap2010:WorkflowViewState.IdRef="Sequence_96">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ui:LogMessage DisplayName="Log Message - Create Payment Details Table" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_18" Level="Info" Message="[&quot;Creating payment details table...&quot;]" />
+                                    <Assign DisplayName="Assign - Payment Template Path" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_25">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[PaymentTemplatePath]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[Path.Combine(System.Environment.CurrentDirectory, in_Config("TemplatesFolder").ToString, in_Config("PaymentDetailsTemplateName").ToString)]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[PaymentDetailsDT]" DisplayName="Read Range - Payment Details" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[in_Config(&quot;PaymentDetailsSheetName&quot;).ToString]" WorkbookPath="[PaymentTemplatePath]" />
+                                  </Sequence>
+                                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke GetNSPaymentDetails workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="ProcessLayer\CustomWorkflows\GetNSPaymentDetails.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_NSIsProd">[in_NSIsProd]</InArgument>
+                                      <InArgument x:TypeArguments="n:HeaderCredentials" x:Key="in_NSHeaderCredentials">[in_NSHeaderCredentials]</InArgument>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_NSBillInternalID">[NSBills(0).internalId]</InArgument>
+                                      <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_PaymentDetailsDT">[PaymentDetailsDT]</InOutArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="io_Comments">[out_Comments]</InOutArgument>
+                                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                  </ui:InvokeWorkflowFile>
+                                  <If Condition="[PaymentDetailsDT.Rows.Count &gt; 0]" DisplayName="If - Payment Details Found" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_9">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <If.Then>
+                                      <Sequence DisplayName="Create Payment Details File" sap:VirtualizedContainerService.HintSize="476,704" sap2010:WorkflowViewState.IdRef="Sequence_97">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <ui:LogMessage DisplayName="Log Message - Create Payment Details File" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_19" Level="Info" Message="[&quot;Creating payment details file...&quot;]" />
+                                        <ui:MultipleAssign DisplayName="Multiple Assign - Payment Details File Variables" sap:VirtualizedContainerService.HintSize="434,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_9">
+                                          <ui:MultipleAssign.AssignOperations>
+                                            <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_31">
+                                                <ui:AssignOperation.To>
+                                                  <OutArgument x:TypeArguments="x:String">[PaymentDetailsFileName]</OutArgument>
+                                                </ui:AssignOperation.To>
+                                                <ui:AssignOperation.Value>
+                                                  <InArgument x:TypeArguments="x:String">[in_Config("PaymentDetailsFileName").ToString.Replace("&lt;DocumentNumber&gt;", io_TransactionItem(in_Config("DocNumberColumn").ToString).ToString)]</InArgument>
+                                                </ui:AssignOperation.Value>
+                                              </ui:AssignOperation>
+                                              <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_32">
+                                                <ui:AssignOperation.To>
+                                                  <OutArgument x:TypeArguments="x:String">[PaymentDetailsFilePath]</OutArgument>
+                                                </ui:AssignOperation.To>
+                                                <ui:AssignOperation.Value>
+                                                  <InArgument x:TypeArguments="x:String">[Path.Combine(TransactionFolder, PaymentDetailsFileName)]</InArgument>
+                                                </ui:AssignOperation.Value>
+                                              </ui:AssignOperation>
+                                            </scg:List>
+                                          </ui:MultipleAssign.AssignOperations>
+                                        </ui:MultipleAssign>
+                                        <ui:CopyFile ContinueOnError="{x:Null}" Destination="[PaymentDetailsFilePath]" DisplayName="Copy File - Payment Details" sap:VirtualizedContainerService.HintSize="434,157" sap2010:WorkflowViewState.IdRef="CopyFile_3" Overwrite="True" Path="[PaymentTemplatePath]" />
+                                        <ui:WriteRange AddHeaders="True" DataTable="[PaymentDetailsDT]" DisplayName="Write Range - Payment Details" sap:VirtualizedContainerService.HintSize="434,115" sap2010:WorkflowViewState.IdRef="WriteRange_3" SheetName="[in_Config(&quot;PaymentDetailsSheetName&quot;).ToString]" StartingCell="A1" WorkbookPath="[PaymentDetailsFilePath]" />
+                                      </Sequence>
+                                    </If.Then>
+                                    <If.Else>
+                                      <Assign DisplayName="Assign - No Payment Details" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_26">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[out_Comments]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[out_Comments + System.Environment.NewLine + in_Config("NoPaymentDetails").ToString]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </If.Else>
+                                  </If>
+                                  <If Condition="[String.IsNullOrWhiteSpace(out_Comments)]" DisplayName="If - No Comments" sap:VirtualizedContainerService.HintSize="334,51" sap2010:WorkflowViewState.IdRef="If_10">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <If.Then>
+                                      <Assign DisplayName="Assign - No Comments" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_27">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[out_Comments]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[in_Config("NAKeyword").ToString]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </If.Then>
+                                    <If.Else>
+                                      <Assign DisplayName="Assign - Trim Comments" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_28">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">[out_Comments]</OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">[out_Comments.Trim]</InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                    </If.Else>
+                                  </If>
+                                </Sequence>
+                                <FlowStep.Next>
+                                  <x:Reference>__ReferenceID0</x:Reference>
+                                </FlowStep.Next>
+                              </FlowStep>
                             </FlowStep.Next>
                           </FlowStep>
                         </FlowDecision.False>
@@ -654,6 +696,7 @@
           <x:Reference>__ReferenceID5</x:Reference>
           <x:Reference>__ReferenceID6</x:Reference>
           <x:Reference>__ReferenceID0</x:Reference>
+          <x:Reference>__ReferenceID7</x:Reference>
         </Flowchart>
         <Sequence sap2010:Annotation.AnnotationText="Successful logging for workblock. &#xA;You should also publish the output arguments that you want to make available in the log." DisplayName="wb Logging Successful" sap:VirtualizedContainerService.HintSize="874,467" sap2010:WorkflowViewState.IdRef="Sequence_66">
           <sap:WorkflowViewStateService.ViewState>
